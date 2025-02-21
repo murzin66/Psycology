@@ -1,0 +1,205 @@
+/* Общие стили */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* Шапка */
+.header {
+  background: #3498db;
+  color: #fff;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.header__title {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.header__subtitle {
+  font-size: 1.5rem;
+  margin: 10px 0 20px;
+}
+
+.header__button {
+  background: #e74c3c;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* Обо мне */
+.about {
+  padding: 50px 0;
+}
+
+.about__content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.about__image {
+  width: 300px;
+  border-radius: 10px;
+}
+
+.about__text {
+  font-size: 1.1rem;
+}
+
+/* Услуги */
+.services {
+  background: #f9f9f9;
+  padding: 50px 0;
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.service {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.service__title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* Прайс-лист */
+.pricing {
+  padding: 50px 0;
+}
+
+.pricing__table {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.pricing__item {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pricing__price {
+  font-size: 1.5rem;
+  color: #e74c3c;
+}
+
+/* Отзывы */
+.reviews {
+  background: #f9f9f9;
+  padding: 50px 0;
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.review {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.review__text {
+  font-style: italic;
+}
+
+.review__author {
+  text-align: right;
+  font-weight: bold;
+}
+
+/* Контакты */
+.contact {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.contact__info {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contact__phone, .contact__whatsapp {
+  display: inline-block;
+  background: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.contact__whatsapp {
+  background: #25d366;
+}
+
+.contact__text {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+/* Футер */
+.footer {
+  background: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
