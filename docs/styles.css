@@ -203,3 +203,51 @@ body {
   text-align: center;
   padding: 20px 0;
 }
+
+/* Медиазапросы для мобильных устройств */
+@media (max-width: 768px) {
+  .header__title {
+    font-size: 2rem; /* Уменьшаем размер заголовка */
+  }
+
+  .header__subtitle {
+    font-size: 1.2rem; /* Уменьшаем размер подзаголовка */
+  }
+
+  .header__button {
+    font-size: 1rem; /* Уменьшаем размер кнопки */
+    padding: 8px 16px;
+  }
+
+  .about__content {
+    flex-direction: column; /* Меняем направление flex на колонку */
+    text-align: center;
+  }
+
+  .about__image {
+    width: 100%; /* Делаем изображение адаптивным */
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .services__grid, .pricing__table, .reviews__grid, .achievements__grid {
+    grid-template-columns: 1fr; /* Одна колонка для мобильных устройств */
+  }
+
+  .section-title {
+    font-size: 2rem; /* Уменьшаем размер заголовков секций */
+  }
+
+  .service, .pricing__item, .review, .achievement {
+    margin-bottom: 20px; /* Добавляем отступ между карточками */
+  }
+
+  .contact__info {
+    padding: 15px; /* Уменьшаем отступы внутри блока контактов */
+  }
+
+  .contact__phone, .contact__whatsapp {
+    font-size: 1rem; /* Уменьшаем размер кнопок */
+    padding: 8px 16px;
+  }
+}
