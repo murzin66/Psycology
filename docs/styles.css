@@ -5,6 +5,7 @@ body {
   padding: 0;
   color: #333;
   line-height: 1.6;
+  background-color:#E6D5B8;
 }
 
 .container {
@@ -39,7 +40,7 @@ body {
 
 /* Шапка */
 .header {
-  background: #3498db;
+  background: #D2B48C;
   color: #fff;
   padding: 100px 0;
   text-align: center;
@@ -61,9 +62,15 @@ body {
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
+  border: 3px solid;
+
+  border-color: #b73c2c;
   font-size: 1.2rem;
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 50px;
+}
+.header__button:hover{
+	background-color:#b73c2c;
 }
 
 /* Обо мне */
@@ -185,20 +192,33 @@ body {
   border-radius: 5px;
   margin: 10px 0;
   font-size: 1.2rem;
+    border: 3px, solid;
+  border-color: #24689b;
+}
+.contact__phone:hover{
+	background:#24689b;
 }
 
 .contact__whatsapp {
   background: #25d366;
+  border: 3px, solid;
+  border-color:#1b9b4a;
+
+}
+.contact__whatsapp:hover{
+	background: #1b9b4a;
+
 }
 
 .contact__text {
   font-size: 1.1rem;
   margin-bottom: 10px;
+  
 }
 
 /* Футер */
 .footer {
-  background: #2c3e50;
+  background:  #D2B48C;
   color: #fff;
   text-align: center;
   padding: 20px 0;
@@ -250,4 +270,235 @@ body {
     font-size: 1rem; /* Уменьшаем размер кнопок */
     padding: 8px 16px;
   }
+}
+.header-sub{
+}
+
+/* Шапка с фото слева */
+.header .container {
+    display: flex; /* Включаем flexbox для контейнера */
+    align-items: center; /* Выравниваем элементы по вертикали */
+    gap: 20px; /* Расстояние между фото и текстом */
+}
+
+.header-sub {
+    flex: 1; /* Распределяем пространство между блоками */
+}
+
+.header-sub img {
+    width: 100%; /* Делаем фото адаптивным */
+    max-width: 300px; /* Ограничиваем максимальную ширину */
+    border-radius: 10px; /* Скругляем углы */
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column; /* Меняем направление на колонку */
+        text-align: center; /* Выравниваем текст по центру */
+    }
+
+    .header-sub img {
+        max-width: 200px; /* Уменьшаем фото для мобильных */
+        margin-bottom: 20px; /* Добавляем отступ снизу */
+    }
+}
+/* Секция с документами */
+.documents-section {
+    padding: 50px 0;
+    background-color: #f9f9f9; /* Светлый фон */
+}
+
+.documents-title {
+    text-align: center;
+    font-size: 2rem;
+    color: black;
+    margin-bottom: 30px;
+}
+
+.documents-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.document-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    background-color: #fff;
+    border: 3px solid #ddd;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 400px;
+}
+
+.document-link:hover {
+    background-color: #D2B48C;
+    color: #fff;
+    border-color: #A2845C;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.document-icon {
+    font-size: 1.2rem;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .documents-title {
+        font-size: 1.8rem;
+    }
+
+    .document-link {
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
+}
+
+/* Секция с дипломами */
+.diplomas-section {
+    padding: 50px 0;
+    background-color: #f9f9f9; /* Светлый фон */
+}
+
+.diplomas-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.diplomas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.diploma-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.diploma-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.diploma-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px 10px 0 0;
+    transition: transform 0.3s ease;
+}
+
+.diploma-item:hover .diploma-image {
+    transform: scale(1.05);
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .diplomas-title {
+        font-size: 1.8rem;
+    }
+
+    .diplomas-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+}
+.zoomed {
+    transform: scale(2) !important;
+    cursor: zoom-out;
+    z-index: 1000;
+    position: relative;
+}
+/* Секция с формой */
+.contact-form-section {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+.contact-form-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #D2B48C;
+    border: 3px solid;
+    border-radius: 5px;
+	border-color: #A2845C;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #A2845C;;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .contact-form-title {
+        font-size: 1.8rem;
+    }
+
+    .contact-form {
+        padding: 15px;
+    }
 }
