@@ -3,10 +3,16 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  color: #333;
+  color: #fff;
+  background-color: #1f2937;
   line-height: 1.6;
 }
-
+h2.section-title {
+  color: #fff; /* Белый цвет */
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
 .container {
   width: 90%;
   max-width: 1200px;
@@ -17,7 +23,7 @@ body {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #2c3e50;
+  color: #e74c3c;
 }
 
 /* Анимации */
@@ -39,7 +45,7 @@ body {
 
 /* Шапка */
 .header {
-  background: #3498db;
+  background: #2c3e50;
   color: #fff;
   padding: 100px 0;
   text-align: center;
@@ -88,7 +94,7 @@ body {
 
 /* Услуги */
 .services {
-  background: #f9f9f9;
+  background: #2c3e50;
   padding: 50px 0;
 }
 
@@ -99,7 +105,7 @@ body {
 }
 
 .service {
-  background: #fff;
+  background: #34495e;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -108,6 +114,7 @@ body {
 .service__title {
   font-size: 1.5rem;
   margin-bottom: 10px;
+  color: #e74c3c;
 }
 
 /* Прайс-лист */
@@ -122,7 +129,7 @@ body {
 }
 
 .pricing__item {
-  background: #fff;
+  background: #34495e;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -135,7 +142,7 @@ body {
 
 /* Отзывы */
 .reviews {
-  background: #f9f9f9;
+  background: #2c3e50;
   padding: 50px 0;
 }
 
@@ -146,7 +153,7 @@ body {
 }
 
 .review {
-  background: #fff;
+  background: #34495e;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -159,6 +166,7 @@ body {
 .review__author {
   text-align: right;
   font-weight: bold;
+  color: #e74c3c;
 }
 
 /* Контакты */
@@ -168,7 +176,7 @@ body {
 }
 
 .contact__info {
-  background: #fff;
+  background: #34495e;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -178,7 +186,7 @@ body {
 
 .contact__phone, .contact__whatsapp {
   display: inline-block;
-  background: #3498db;
+  background: #e74c3c;
   color: #fff;
   padding: 10px 20px;
   text-decoration: none;
@@ -202,52 +210,4 @@ body {
   color: #fff;
   text-align: center;
   padding: 20px 0;
-}
-
-/* Медиазапросы для мобильных устройств */
-@media (max-width: 768px) {
-  .header__title {
-    font-size: 2rem; /* Уменьшаем размер заголовка */
-  }
-
-  .header__subtitle {
-    font-size: 1.2rem; /* Уменьшаем размер подзаголовка */
-  }
-
-  .header__button {
-    font-size: 1rem; /* Уменьшаем размер кнопки */
-    padding: 8px 16px;
-  }
-
-  .about__content {
-    flex-direction: column; /* Меняем направление flex на колонку */
-    text-align: center;
-  }
-
-  .about__image {
-    width: 100%; /* Делаем изображение адаптивным */
-    max-width: 300px;
-    margin-bottom: 20px;
-  }
-
-  .services__grid, .pricing__table, .reviews__grid, .achievements__grid {
-    grid-template-columns: 1fr; /* Одна колонка для мобильных устройств */
-  }
-
-  .section-title {
-    font-size: 2rem; /* Уменьшаем размер заголовков секций */
-  }
-
-  .service, .pricing__item, .review, .achievement {
-    margin-bottom: 20px; /* Добавляем отступ между карточками */
-  }
-
-  .contact__info {
-    padding: 15px; /* Уменьшаем отступы внутри блока контактов */
-  }
-
-  .contact__phone, .contact__whatsapp {
-    font-size: 1rem; /* Уменьшаем размер кнопок */
-    padding: 8px 16px;
-  }
 }
