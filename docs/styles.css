@@ -7,7 +7,11 @@ body {
   line-height: 1.6;
   background-color:#E6D5B8;
 }
-
+.about__text_2 {
+  font-size: 1.4rem; /* Размер текста */
+  line-height: 1.6; /* Межстрочный интервал для удобства чтения */
+  text-align: justify;
+}
 .container {
   width: 90%;
   max-width: 1200px;
@@ -19,6 +23,10 @@ body {
   font-size: 2.5rem;
   margin-bottom: 2rem;
   color: #2c3e50;
+}
+
+.work{
+  font-size: 1.5rem;
 }
 
 /* Анимации */
@@ -57,20 +65,20 @@ body {
 }
 
 .header__button {
-  background: #e74c3c;
+  background: #C4A484;
   color: #fff;
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
   border: 3px solid;
 
-  border-color: #b73c2c;
+  border-color: #AA8C64;
   font-size: 1.2rem;
   display: inline-block;
   margin-top: 50px;
 }
 .header__button:hover{
-	background-color:#b73c2c;
+	background-color:#AA8C64;
 }
 
 /* Обо мне */
@@ -115,11 +123,13 @@ body {
 .service__title {
   font-size: 1.5rem;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 /* Прайс-лист */
 .pricing {
   padding: 50px 0;
+  text-align: center;
 }
 
 .pricing__table {
@@ -137,7 +147,8 @@ body {
 
 .pricing__price {
   font-size: 1.5rem;
-  color: #e74c3c;
+  text-align: center;
+
 }
 
 /* Отзывы */
@@ -185,7 +196,6 @@ body {
 
 .contact__phone, .contact__whatsapp {
   display: inline-block;
-  background: #3498db;
   color: #fff;
   padding: 10px 20px;
   text-decoration: none;
@@ -193,7 +203,6 @@ body {
   margin: 10px 0;
   font-size: 1.2rem;
     border: 3px, solid;
-  border-color: #24689b;
 }
 .contact__phone:hover{
 	background:#24689b;
@@ -213,7 +222,7 @@ body {
 .contact__text {
   font-size: 1.1rem;
   margin-bottom: 10px;
-  
+
 }
 
 /* Футер */
@@ -243,6 +252,7 @@ body {
     flex-direction: column; /* Меняем направление flex на колонку */
     text-align: center;
   }
+
 
   .about__image {
     width: 100%; /* Делаем изображение адаптивным */
@@ -501,4 +511,183 @@ body {
     .contact-form {
         padding: 15px;
     }
+}
+
+
+/* Общие стили для секции */
+.problems {
+  padding: 60px 0;
+  background-color: #f9f9f9; /* Светлый фон */
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+/* Стили для категорий */
+.problems__category {
+  margin-bottom: 40px;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.problems__category:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.problems__subtitle {
+  font-size: 1.5rem;
+  color: #D2B48C; /* Акцентный цвет */
+  margin-bottom: 20px;
+  font-weight: 600;
+  border-bottom: 2px solid #D2B48C;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Стили для списка */
+.problems__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.problems__item {
+  font-size: 1.1rem;
+  color: #333;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  padding-left: 25px;
+}
+
+.problems__item:last-child {
+  border-bottom: none;
+}
+
+.problems__item::before {
+  content: "•";
+  color: #D2B48C; /* Акцентный цвет */
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Анимация для fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .problems__subtitle {
+    font-size: 1.3rem;
+  }
+
+  .problems__item {
+    font-size: 1rem;
+  }
+}
+
+/* Стили для секции контактов */
+.contact {
+  padding: 50px 0;
+  background-color: #f9f9f9;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.contact__info {
+  text-align: center;
+}
+
+.contact__text {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Контейнер для иконок */
+.contact__icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Расстояние между иконками */
+  margin-bottom: 20px;
+}
+
+/* Стили для иконок */
+.contact__icon {
+  display: inline-block;
+  width: 50px; /* Размер иконок */
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.contact__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Сохраняет пропорции иконок */
+}
+
+.contact__icon:hover {
+  transform: scale(1.1); /* Увеличение при наведении */
+}
+
+/* Стили для кнопки WhatsApp */
+.contact__whatsapp {
+  display: inline-block;
+  background-color: #25d366;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.contact__whatsapp:hover {
+  background-color: #128c7e;
 }
