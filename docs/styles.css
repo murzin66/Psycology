@@ -713,12 +713,19 @@ body {
 
 .gallery-image {
   width: 33.33%; /* Ширина остается прежней */
-  max-height: 400px; /* Максимальная высота */
-  object-fit: contain; /* Сохраняет пропорции без обрезки */
+  max-height: 300px; /* Максимальная высота */
+  object-fit:fill; /* Сохраняет пропорции без обрезки */
   cursor: pointer;
   transition: transform 0.3s ease;
 }
-
+@media (max-width: 768px) {
+  .gallery-image {
+      width: 100%; /* На мобильных устройствах отображаем одно изображение */
+  }
+  .nav-gallery-button {
+    display: none; /* Скрываем кнопки на мобильных устройствах */
+}
+}
 .gallery-image:hover {
   transform: scale(1.05);
 }
