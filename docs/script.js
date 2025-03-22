@@ -1,108 +1,129 @@
-// Анимация появления элементов при скролле
-const fadeElements = document.querySelectorAll('.fade-in');
+let currentIndex = 0;
+let isSwiping = false;
+let touchStartX = 0;
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-});
+const track = document.querySelector('.gallery-track');
+const images = document.querySelectorAll('.gallery-image');
+const modal = document.getElementById('modal');
+const modalImage = document.getElementById('modalImage');
+const gallery = document.querySelector('.gallery');
 
-fadeElements.forEach((element) => {
-  observer.observe(element);
-});
+// Обновление позиции галереи
+function updateGallery() {
+  const containerWidth = gallery.offsetWidth;
+  track.style.transform = `translateX(-${currentIndex * containerWidth}px)`;
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-  const galleryTrack = document.querySelector('.gallery-track');
-  const prevButton = document.getElementById('prevButton');
-  const nextButton = document.getElementById('nextButton');
-  const images = document.querySelectorAll('.gallery-image');
-  const modal = document.getElementById('modal');
-  const modalImage = document.getElementById('modalImage');
-  const closeModal = document.querySelector('.close');
+// Управление модальным окном
+function openModal(index) {
+  currentIndex = index;
+  modal.style.display = 'block';
+  modalImage.src = images[currentIndex].src;
+  document.body.style.overflow = 'hidden';
+}
 
-  let currentIndex = 0;
-  let startX = 0;
-  let isSwiping = false;
+function closeModal() {
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
 
-  // Функция для обновления галереи
-  function updateGallery() {
-      const offset = -currentIndex * 100; // На мобильных устройствах смещаем на 100%
-      galleryTrack.style.transform = `translateX(${offset}%)`;
+// Навигация кнопками
+document.getElementById('prevButton').addEventListener('click', () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateGallery();
   }
-
-  // Обработка кнопок "влево" и "вправо"
-  prevButton.addEventListener('click', () => {
-      if (currentIndex > 0) {
-          currentIndex--;
-          updateGallery();
-      }
-  });
-
-  nextButton.addEventListener('click', () => {
-      if (currentIndex < images.length - 1) {
-          currentIndex++;
-          updateGallery();
-      }
-  });
-
-  // Обработка свайпов
-  galleryTrack.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-      isSwiping = true;
-  });
-
-  galleryTrack.addEventListener('touchmove', (e) => {
-      if (!isSwiping) return;
-      const currentX = e.touches[0].clientX;
-      const diffX = startX - currentX;
-
-      // Смещаем галерею во время свайпа
-      galleryTrack.style.transform = `translateX(calc(-${currentIndex * 100}% - ${diffX}px))`;
-  });
-
-  galleryTrack.addEventListener('touchend', (e) => {
-      if (!isSwiping) return;
-      const endX = e.changedTouches[0].clientX;
-      const diffX = startX - endX;
-
-      // Определяем, был ли это свайп
-      if (Math.abs(diffX) > 50) { // Минимальное расстояние для свайпа
-          if (diffX > 0 && currentIndex < images.length - 1) {
-              // Свайп влево
-              currentIndex++;
-          } else if (diffX < 0 && currentIndex > 0) {
-              // Свайп вправо
-              currentIndex--;
-          }
-      }
-
-      // Обновляем галерею
-      updateGallery();
-      isSwiping = false;
-  });
-
-  // Открытие модального окна при клике на изображение
-  images.forEach((image) => {
-      image.addEventListener('click', () => {
-          modal.style.display = 'block';
-          modalImage.src = image.src;
-      });
-  });
-
-  // Закрытие модального окна
-  closeModal.addEventListener('click', () => {
-      modal.style.display = 'none';
-  });
-
-  modalImage.addEventListener('click', () => {
-      modal.style.display = 'none';
-  });
-
-  window.addEventListener('click', (event) => {
-      if (event.target === modal) {
-          modal.style.display = 'none';
-      }
-  });
 });
+
+document.getElementById('nextButton').addEventListener('click', () => {
+  if (currentIndex < images.length - 1) {
+    currentIndex++;
+    updateGallery();
+  }
+});
+
+// Клик по изображениям
+images.forEach((img, index) => {
+  img.addEventListener('click', () => openModal(index));
+});
+
+// Закрытие модального окна
+document.querySelector('.close').addEventListener('click', closeModal);
+modal.addEventListener('click', (e) => e.target === modal && closeModal());
+
+// Свайпы для основной галереи (только мобильные)
+gallery.addEventListener('touchstart', handleTouchStart);
+gallery.addEventListener('touchmove', handleTouchMove);
+gallery.addEventListener('touchend', handleTouchEnd);
+
+// Обработчики касаний
+function handleTouchStart(e) {
+  if (window.innerWidth > 767) return;
+  touchStartX = e.touches[0].clientX;
+  isSwiping = true;
+}
+
+function handleTouchMove(e) {
+  if (!isSwiping || window.innerWidth > 767) return;
+  e.preventDefault();
+}
+
+function handleTouchEnd(e) {
+  if (!isSwiping || window.innerWidth > 767) return;
+  isSwiping = false;
+  handleSwipe(e.changedTouches[0].clientX, false);
+}
+
+// Свайпы для модального окна
+modal.addEventListener('touchstart', handleModalTouchStart);
+modal.addEventListener('touchmove', handleModalTouchMove);
+modal.addEventListener('touchend', handleModalTouchEnd);
+
+function handleModalTouchStart(e) {
+  touchStartX = e.touches[0].clientX;
+  isSwiping = true;
+}
+
+function handleModalTouchMove(e) {
+  if (!isSwiping) return;
+  e.preventDefault();
+}
+
+function handleModalTouchEnd(e) {
+  if (!isSwiping) return;
+  isSwiping = false;
+  handleSwipe(e.changedTouches[0].clientX, true);
+}
+
+// Обработка свайпов
+function handleSwipe(endX, isModal) {
+  const diff = touchStartX - endX;
+  const swipeThreshold = 50;
+
+  if (Math.abs(diff) > swipeThreshold) {
+    if (diff > 0 && currentIndex < images.length - 1) currentIndex++;
+    else if (diff < 0 && currentIndex > 0) currentIndex--;
+
+    if (isModal) modalImage.src = images[currentIndex].src;
+    else updateGallery();
+  }
+}
+
+// Управление клавиатурой
+document.addEventListener('keydown', (e) => {
+  if (modal.style.display === 'block') {
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft' && currentIndex > 0) currentIndex--;
+    if (e.key === 'ArrowRight' && currentIndex < images.length - 1) currentIndex++;
+    modalImage.src = images[currentIndex].src;
+  }
+});
+
+// Адаптация при ресайзе
+window.addEventListener('resize', () => {
+  updateGallery();
+  if (window.innerWidth > 767 && modal.style.display === 'block') closeModal();
+});
+
+// Инициализация
+updateGallery();
