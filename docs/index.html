@@ -42,36 +42,164 @@
     </div>
   </section>
 	<section class="diplomas-section">
-		<div class="container">
-			<h2 class="diplomas-title">Мои дипломы и сертификаты</h2>
-			<div class="gallery-container">
-        <button class="nav-gallery-button" id="prevButton">&lt;</button>
-        <div class="gallery">
-            <div class="gallery-track">
-                <img src="./diplomas/diploma1.jpeg" alt="Диплом 1" class="gallery-image">
-                <img src="./diplomas/diploma2.jpeg" alt="Диплом 2" class="gallery-image">
-                <img src="./diplomas/diploma3.jpeg" alt="Диплом 3" class="gallery-image">
-                <img src="./diplomas/diploma4.jpeg" alt="Диплом 4" class="gallery-image">
-                <img src="./diplomas/diploma5.jpeg" alt="Диплом 5" class="gallery-image">
-                <img src="./diplomas/diploma6.png" alt="Диплом 6" class="gallery-image">
-                <img src="./diplomas/diploma7.jpg" alt="Диплом 7" class="gallery-image">
-                <img src="./diplomas/diploma8.png" alt="Диплом 8" class="gallery-image">
-                <img src="./diplomas/diploma9.jpg" alt="Диплом 9" class="gallery-image">
-                <img src="./diplomas/diploma10.png" alt="Диплом 10" class="gallery-image">
-                <img src="./diplomas/diploma11.png" alt="Диплом 11" class="gallery-image">
-                <img src="./diplomas/diploma12.png" alt="Диплом 12" class="gallery-image">
+    <div class="container">
+        <h2 class="diplomas-title">Мои дипломы и сертификаты</h2>
+        <div class="gallery-container">
+            <button class="nav-gallery-button" id="prevButton">&lt;</button>
+            <div class="gallery">
+                <div class="gallery-track">
+                    <img src="./diplomas/diploma1.jpeg" alt="Диплом 1" class="gallery-image">
+                    <img src="./diplomas/diploma2.jpeg" alt="Диплом 2" class="gallery-image">
+                    <img src="./diplomas/diploma3.jpeg" alt="Диплом 3" class="gallery-image">
+                    <img src="./diplomas/diploma4.jpeg" alt="Диплом 4" class="gallery-image">
+                    <img src="./diplomas/diploma5.jpeg" alt="Диплом 5" class="gallery-image">
+                    <img src="./diplomas/diploma6.png" alt="Диплом 6" class="gallery-image">
+                    <img src="./diplomas/diploma7.jpg" alt="Диплом 7" class="gallery-image">
+                    <img src="./diplomas/diploma8.png" alt="Диплом 8" class="gallery-image">
+                    <img src="./diplomas/diploma9.jpg" alt="Диплом 9" class="gallery-image">
+                    <img src="./diplomas/diploma10.png" alt="Диплом 10" class="gallery-image">
+                    <img src="./diplomas/diploma11.png" alt="Диплом 11" class="gallery-image">
+                    <img src="./diplomas/diploma12.png" alt="Диплом 12" class="gallery-image">
+                </div>
+            </div>
+            <button class="nav-gallery-button" id="nextButton">&gt;</button>
+        </div>
 
+        <div id="modal" class="modal">
+            <span class="close">&times;</span>
+            <div class="modal-navigation">
+                <div class="modal-nav-area left" id="modalPrev"></div>
+                <img class="modal-content" id="modalImage">
+                <div class="modal-nav-area right" id="modalNext"></div>
             </div>
         </div>
-        <button class="nav-gallery-button" id="nextButton">&gt;</button>
     </div>
+</section>
 
-    <div id="modal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-		</div>
-	</section>
+<script>
+  let currentIndex = 0;
+  const images = document.querySelectorAll('.gallery-image');
+  const modal = document.getElementById('modal');
+  const modalImage = document.getElementById('modalImage');
+  const modalPrev = document.getElementById('modalPrev');
+  const modalNext = document.getElementById('modalNext');
+  let touchStartX = 0;
+  let isSwiping = false;
+
+  function updateGallery() {
+      images.forEach((img, index) => {
+          img.classList.toggle('active', index === currentIndex);
+      });
+  }
+
+  document.getElementById('prevButton').addEventListener('click', () => {
+      if (currentIndex > 0) {
+          currentIndex--;
+          updateGallery();
+      }
+  });
+
+  document.getElementById('nextButton').addEventListener('click', () => {
+      if (currentIndex < images.length - 1) {
+          currentIndex++;
+          updateGallery();
+      }
+  });
+
+  images.forEach((img, index) => {
+      img.addEventListener('click', () => {
+          currentIndex = index;
+          openModal();
+      });
+  });
+
+  function openModal() {
+      if (modal.style.display !== 'block') {
+          modalImage.src = images[currentIndex].src;
+          modal.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+      }
+  }
+
+  document.querySelector('.close').addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+  });
+
+  function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+  }
+
+  modalPrev.addEventListener('click', () => {
+      if (currentIndex > 0) {
+          currentIndex--;
+          modalImage.src = images[currentIndex].src;
+      }
+  });
+
+  modalNext.addEventListener('click', () => {
+      if (currentIndex < images.length - 1) {
+          currentIndex++;
+          modalImage.src = images[currentIndex].src;
+      }
+  });
+
+  // Свайпы в модальном режиме
+  modal.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      isSwiping = true;
+  });
+
+  modal.addEventListener('touchmove', (e) => {
+      if (!isSwiping) return;
+      e.preventDefault();
+  });
+
+  modal.addEventListener('touchend', (e) => {
+      if (!isSwiping) return;
+      isSwiping = false;
+      handleSwipe(e.changedTouches[0].clientX, true);
+  });
+
+  // Свайпы в основной галерее (мобильная версия)
+  document.querySelector('.gallery-container').addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      isSwiping = true;
+  });
+
+  document.querySelector('.gallery-container').addEventListener('touchmove', (e) => {
+      if (!isSwiping) return;
+      e.preventDefault();
+  });
+
+  document.querySelector('.gallery-container').addEventListener('touchend', (e) => {
+      if (!isSwiping) return;
+      isSwiping = false;
+      handleSwipe(e.changedTouches[0].clientX, false);
+  });
+
+  function handleSwipe(endX, isModal) {
+      const diff = touchStartX - endX;
+      const swipeThreshold = 50;
+
+      if (Math.abs(diff) > swipeThreshold) {
+          if (diff > 0 && currentIndex < images.length - 1) currentIndex++;
+          else if (diff < 0 && currentIndex > 0) currentIndex--;
+
+          if (isModal) modalImage.src = images[currentIndex].src;
+          else updateGallery();
+      }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+      modal.style.display = 'none'; // Гарантированное скрытие модального окна при загрузке страницы
+      updateGallery();
+  });
+  </script>
+
+
+
   <section class="services fade-in">
     <div class="container">
       <h2 class="section-title">Услуги</h2>
@@ -268,3 +396,5 @@
 </script>
 </body>
 </html>
+
+
