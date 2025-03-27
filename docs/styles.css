@@ -29,22 +29,6 @@ body {
   font-size: 1.5rem;
 }
 
-/* Анимации */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 1s ease-in-out forwards;
-}
 
 /* Шапка */
 .header {
@@ -469,7 +453,9 @@ body {
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
     font-size: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
