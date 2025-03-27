@@ -794,3 +794,32 @@ body {
 
 .modal-nav-area.left { left: 0; }
 .modal-nav-area.right { right: 0; }
+
+.header__title,
+.header__subtitle,
+.header__text {
+    margin: 1px 0; /* Регулируйте это значение */
+}
+
+/* Для строк с переносами */
+.header__subtitles {
+    display: flex;
+    align-items: center;
+    gap: 3px; /* Расстояние между словами в строке */
+    flex-wrap: wrap;
+}
+
+/* Единый стиль для подзаголовков */
+.header__subtitle {
+    line-height: 1.4; /* Регулируйте высоту строки */
+    margin: 0;
+}
+
+/* Для кнопки */
+.header__button {
+    display: block;
+    margin-top: 15px;
+}
+.header_add_info{
+  margin-top: 15px;
+}
