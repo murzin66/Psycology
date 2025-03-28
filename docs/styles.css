@@ -130,11 +130,15 @@ body {
 }
 
 .pricing__price {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  text-align: justify;
+
+}
+.pricing__price_2 {
+  font-size: 1.2rem;
   text-align: center;
 
 }
-
 /* Отзывы */
 .reviews {
   background: #f9f9f9;
@@ -255,6 +259,7 @@ body {
   .service, .pricing__item, .review, .achievement {
     margin-bottom: 20px; /* Добавляем отступ между карточками */
   }
+
 
   .contact__info {
     padding: 15px; /* Уменьшаем отступы внутри блока контактов */
