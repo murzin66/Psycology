@@ -79,6 +79,7 @@ body {
 .about__image {
   width: 200px;
   border-radius: 10px;
+
 }
 
 .about__text {
@@ -283,11 +284,18 @@ body {
 }
 
 .header-sub img {
-    width: 60%; /* Делаем фото адаптивным */
-    max-width: 520px; /* Ограничиваем максимальную ширину */
-    border-radius: 10px; /* Скругляем углы */
+  width: 60%;
+  max-width: 520px;
+  border-radius: 10px; /* Скругление углов */
+  -webkit-mask-image:
+  linear-gradient(to right, transparent 0%, white 10%, white 95%, transparent 100%),
+  linear-gradient(to bottom, transparent 0%, white 10%, white 95%, transparent 100%);
+mask-image:
+  linear-gradient(to right, transparent 0%, white 10%, white 95%, transparent 100%),
+  linear-gradient(to bottom, transparent 0%, white 10%, white 95%, transparent 100%);
+-webkit-mask-composite: destination-in;
+mask-composite: intersect;
 }
-
 /* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
     .header .container {
@@ -298,6 +306,8 @@ body {
     .header-sub img {
         max-width: 300px; /* Уменьшаем фото для мобильных */
         margin-bottom: 20px; /* Добавляем отступ снизу */
+        box-shadow: 20px 20px 20px 20px white inset;
+
     }
 }
 /* Секция с документами */
