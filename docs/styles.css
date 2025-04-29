@@ -77,7 +77,7 @@ body {
 }
 
 .about__image {
-  width: 300px;
+  width: 200px;
   border-radius: 10px;
 }
 
@@ -283,7 +283,7 @@ body {
 }
 
 .header-sub img {
-    width: 100%; /* Делаем фото адаптивным */
+    width: 60%; /* Делаем фото адаптивным */
     max-width: 520px; /* Ограничиваем максимальную ширину */
     border-radius: 10px; /* Скругляем углы */
 }
@@ -296,7 +296,7 @@ body {
     }
 
     .header-sub img {
-        max-width: 200px; /* Уменьшаем фото для мобильных */
+        max-width: 300px; /* Уменьшаем фото для мобильных */
         margin-bottom: 20px; /* Добавляем отступ снизу */
     }
 }
