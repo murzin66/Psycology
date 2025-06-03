@@ -857,14 +857,22 @@ mask-composite: intersect;
 }
 
 .hero-title {
-  font-size: 2.8rem;
-  line-height: 1.2;
+  font-size: 2.5rem;
+  line-height: 0.3;
   color: #2c3e50;
   margin-bottom: 20px;
   font-weight: 600;
 }
+.hero-title_2 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  margin-top: 8%;
+  font-weight: 600;
+}
 
-.hero-title span {
+.hero-title_2 span {
   color: #006611;
 }
 
@@ -886,6 +894,7 @@ mask-composite: intersect;
   padding: 15px 40px;
   border-radius: 50px;
   text-decoration: none;
+  margin-top: 5%;
   font-weight: 600;
   transition: all 0.3s;
   box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
