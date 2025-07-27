@@ -978,3 +978,26 @@ mask-composite: intersect;
 
   }
 }
+.logo-tg-1{
+  border-radius: 30px;
+}
+.contact-form .form-placeholder::placeholder {
+  color: #999;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  opacity: 1;
+}
+
+.contact-form textarea.form-placeholder::placeholder {
+  line-height: 1.5;
+  vertical-align: top;
+}
+.notification{
+  background-color: #E6D5B8;;
+  padding: 2%;
+  font-size: 1.3rem;
+  border-radius: 10px;
+  margin-left: 12%;
+  margin-right: 12%;
+  text-align: center;
+}
