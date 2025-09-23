@@ -14,3 +14,35 @@ window.addEventListener('scroll', () => {
     }
   });
 });
+document.addEventListener('DOMContentLoaded', function() {
+  // Находим все контейнеры с текстом отзывов
+  const textContainers = document.querySelectorAll('.review__text-container');
+  const expandButtons = document.querySelectorAll('.review__expand-btn');
+
+  // Проверяем каждый отзыв
+  textContainers.forEach((container, index) => {
+    const textElement = container.querySelector('.review__text');
+    const button = expandButtons[index];
+
+    // Проверяем, нужно ли ограничивать текст
+    if (textElement.scrollHeight <= container.clientHeight) {
+      // Если текст помещается полностью - скрываем кнопку
+      button.classList.add('hidden');
+    }
+  });
+
+  // Добавляем обработчики клика на кнопки
+  expandButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const container = this.previousElementSibling;
+
+      container.classList.toggle('expanded');
+
+      if (container.classList.contains('expanded')) {
+        this.textContent = 'Свернуть';
+      } else {
+        this.textContent = 'Развернуть';
+      }
+    });
+  });
+});

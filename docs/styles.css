@@ -157,15 +157,63 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.review__text-container {
+  display: -webkit-box;
+  -webkit-line-clamp: 12; /* Количество строк */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.review__text-container.expanded {
+  -webkit-line-clamp: unset;
+  display: block;
 }
 
 .review__text {
   font-style: italic;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Градиент для плавного перехода (только когда текст обрезан) */
+.review__text-container:not(.expanded)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(transparent, white);
+  pointer-events: none;
+}
+
+.review__expand-btn {
+  color: #868e96;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding-left: 0;
+  margin: 10px 0;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.review__expand-btn:hover {
+  color:#727980;
+}
+
+.review__expand-btn.hidden {
+  display: none; /* Скрываем кнопку, если текст не требует ограничения */
 }
 
 .review__author {
   text-align: right;
   font-weight: bold;
+  margin: 0;
 }
 
 /* Контакты */
