@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://http://anna-psy4u.ru/sitemap.xml
