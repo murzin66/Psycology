@@ -1052,8 +1052,9 @@ mask-composite: intersect;
 .footer-docs{
   display: flex;
   align-items: center;
-  width: 80%; /* Задайте ширину */
+  width: 100%; /* Задайте ширину */
   margin: 0 auto;
+  font-size: 12pt;
 }
 .footer-doc{
   margin-left: 1%;
